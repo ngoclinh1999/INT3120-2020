@@ -162,7 +162,7 @@ const ExerciseQuestion = props => {
         .update({questCompleteCount});
       if (questCompleteCount == questCount) {
         levelCompleteCount = levelCompleteCount + 1;
-        var lock = 'No'
+        var lock = 'No';
         firebase
           .database()
           .ref('DataResult')
@@ -170,16 +170,15 @@ const ExerciseQuestion = props => {
           .child('Part')
           .child(`${partId}`)
           .update({levelCompleteCount});
-          firebase
-        .database()
-        .ref('DataResult')
-        .child(`${userId}`)
-        .child('Part')
-        .child(`${partId}`)
-        .child('levels')
-        .child(`${levelId+1}`)
-        .update({lock});
-        
+        firebase
+          .database()
+          .ref('DataResult')
+          .child(`${userId}`)
+          .child('Part')
+          .child(`${partId}`)
+          .child('levels')
+          .child(`${levelId + 1}`)
+          .update({lock});
       }
     }
 

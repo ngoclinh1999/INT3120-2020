@@ -1,9 +1,7 @@
-import React, { Component } from 'react'
-import UpdatePass from '../Components/UpdatePass'
+import React, {Component} from 'react';
+import UpdatePass from '../Components/UpdatePass';
 export default class UpdatePassScreen extends Component {
-    render() {
-        return (
-            <UpdatePass {...this.props}/>
-        )
-    }
+  render() {
+    return <UpdatePass {...this.props} />;
+  }
 }

@@ -7,15 +7,14 @@ import {
   Text,
   AsyncStorage,
   BackHandler,
-  Alert
+  Alert,
 } from 'react-native';
-import {Button,Icon} from 'react-native-elements'
+import {Button, Icon} from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
 import firebase from 'react-native-firebase';
 import {withNavigation} from 'react-navigation';
 const Exercise = props => {
   useEffect(() => {
-
     return () => {};
   }, []);
   return (
@@ -44,7 +43,7 @@ const Exercise = props => {
               backgroundColor: 'white',
               borderRadius: 30,
               height: 50,
-              padding:20
+              padding: 20,
             }}
             titleStyle={{color: '#0592D2', fontSize: 15}}
             containerStyle={{
@@ -52,30 +51,45 @@ const Exercise = props => {
               alignSelf: 'center',
               marginBottom: 25,
             }}
-            onPress={()=>{
+            onPress={() => {
               var user = firebase.auth().currentUser;
 
               if (user) {
-                props.navigation.navigate('SelectSectionScreen')
+                props.navigation.navigate('SelectSectionScreen');
               } else {
                 Alert.alert(
-                  "Nhắc nhở",
-                  "Bạn cần đăng nhập để thực hiện chức năng này!",
+                  'Nhắc nhở',
+                  'Bạn cần đăng nhập để thực hiện chức năng này!',
                   [
                     {
-                      text: "Hủy",
+                      text: 'Hủy',
                       onPress: () => {},
-                      style: "cancel"
+                      style: 'cancel',
                     },
-                    { text: "Đăng nhập", onPress: () =>  {props.navigation.navigate('SignInScreen')}}
+                    {
+                      text: 'Đăng nhập',
+                      onPress: () => {
+                        props.navigation.navigate('SignInScreen');
+                      },
+                    },
                   ],
-                  { cancelable: false }
+                  {cancelable: false},
                 );
               }
-              
             }}
           />
-          <Text style={{textAlign:'center', marginLeft:30, marginRight:30, fontSize:14, color:'#F5F5F5'}}> Hãy nâng cao trình độ của bản thân bằng cách thử sức với các bài tập bằng tiếng anh nhé!</Text>
+          <Text
+            style={{
+              textAlign: 'center',
+              marginLeft: 30,
+              marginRight: 30,
+              fontSize: 14,
+              color: '#F5F5F5',
+            }}>
+            {' '}
+            Hãy nâng cao trình độ của bản thân bằng cách thử sức với các bài tập
+            bằng tiếng anh nhé!
+          </Text>
         </View>
       </LinearGradient>
     </View>

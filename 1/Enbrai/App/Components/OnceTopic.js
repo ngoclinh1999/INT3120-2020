@@ -7,9 +7,13 @@ import {
   ScrollView,
   AsyncStorage,
   BackHandler,
-  StatusBar
+  StatusBar,
 } from 'react-native';
-import {withNavigation,StackActions, NavigationActions} from 'react-navigation';
+import {
+  withNavigation,
+  StackActions,
+  NavigationActions,
+} from 'react-navigation';
 import I18n from 'react-native-i18n';
 import {Icon, CheckBox, ButtonGroup} from 'react-native-elements';
 import SQLite from 'react-native-sqlite-storage';
@@ -67,9 +71,9 @@ const OnceTopic = props => {
       BackHandler.removeEventListener('hardwareBackPress', backAction);
     };
   }, []);
-  const backAction =()=>{
-      props.navigation.goBack()
-  }
+  const backAction = () => {
+    props.navigation.goBack();
+  };
   const updateIndex = async index => {
     setIndex(index);
     if (index == 0) {
@@ -81,7 +85,7 @@ const OnceTopic = props => {
   };
   return (
     <View style={{flex: 1, flexDirection: 'column'}}>
-     <StatusBar backgroundColor='#0592D2' barStyle='light-content'></StatusBar>
+      <StatusBar backgroundColor="#0592D2" barStyle="light-content" />
       <View style={{flex: 9}}>
         <View style={{alignItems: 'center', marginTop: 30}}>
           <Text style={{fontSize: 18, color: '#0288D1'}}>
@@ -160,9 +164,11 @@ const OnceTopic = props => {
               await AsyncStorage.setItem('Topic', JSON.stringify(dataTopic1));
               const resetAction = StackActions.reset({
                 index: 0,
-                actions: [NavigationActions.navigate({ routeName: 'AppStackNavigation' })],
-            });
-            props.navigation.dispatch(resetAction)
+                actions: [
+                  NavigationActions.navigate({routeName: 'AppStackNavigation'}),
+                ],
+              });
+              props.navigation.dispatch(resetAction);
             } catch (error) {
               console.log(error);
             }
