@@ -1,37 +1,41 @@
 import React, {Component, useState, useEffect} from 'react';
-import {Text, View, TouchableOpacity, Dimensions, AsyncStorage} from 'react-native';
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  Dimensions,
+  AsyncStorage,
+} from 'react-native';
 import RadioForm from 'react-native-simple-radio-button';
 import {withNavigation} from 'react-navigation';
 import I18n from 'react-native-i18n';
-import {Icon} from 'react-native-elements'
+import {Icon} from 'react-native-elements';
 const ChangeLanguage = props => {
   const [language, setLanguage] = useState(0);
-  useEffect(()=>{
-    const fetchData = async ()=>{
+  useEffect(() => {
+    const fetchData = async () => {
       try {
         const value = await AsyncStorage.getItem('Language');
-        if(value !== null){
-          setLanguage(parseInt(value))
-        } else setLanguage(0)
+        if (value !== null) {
+          setLanguage(parseInt(value));
+        } else setLanguage(0);
       } catch (error) {
         // Error retrieving data
       }
-    }
+    };
     fetchData();
-    return()=>{
-      
-    }
-  })
+    return () => {};
+  });
   const radio_props = [
     {label: 'Tiếng Việt', value: 0},
     {label: 'Tiếng Anh', value: 1},
   ];
-  const saveData = async (value) => {
-    value = value.toString()
+  const saveData = async value => {
+    value = value.toString();
     try {
-      const result = await AsyncStorage.setItem('Language',value);
+      const result = await AsyncStorage.setItem('Language', value);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
     props.navigation.navigate('HomeScreen');
   };
@@ -51,14 +55,14 @@ const ChangeLanguage = props => {
             buttonSize={10}
             buttonColor="#9E9E9E"
             selectedButtonColor="#FFB74D"
-            onPress={ value  => {
+            onPress={value => {
               setLanguage(value);
             }}
-            buttonStyle ={{marginTop:20}}
-            buttonWrapStyle ={{marginTop:20}}
-            wrapStyle={{marginTop:20}}
+            buttonStyle={{marginTop: 20}}
+            buttonWrapStyle={{marginTop: 20}}
+            wrapStyle={{marginTop: 20}}
             labelStyle={{marginRight: 30, fontSize: 16}}
-            style = {{marginTop:30}}
+            style={{marginTop: 30}}
           />
         </View>
       </View>
@@ -70,17 +74,28 @@ const ChangeLanguage = props => {
           justifyContent: 'center',
           alignItems: 'center',
         }}>
-        <TouchableOpacity style={{padding: 5, marginRight: 20}} onPress = {()=>{props.navigation.goBack()}}>
+        <TouchableOpacity
+          style={{padding: 5, marginRight: 20}}
+          onPress={() => {
+            props.navigation.goBack();
+          }}>
           <Text style={{fontSize: 18, color: '#fff'}}>Hủy</Text>
         </TouchableOpacity>
-        <TouchableOpacity 
-        style={{ padding: 8, backgroundColor: '#FFB74D', flexDirection: 'row', borderRadius: 5}}
-        onPress = {()=>{saveData(language)}}>
+        <TouchableOpacity
+          style={{
+            padding: 8,
+            backgroundColor: '#FFB74D',
+            flexDirection: 'row',
+            borderRadius: 5,
+          }}
+          onPress={() => {
+            saveData(language);
+          }}>
           <Icon
-            name = 'check'
-            size = {25}
-            color= '#fff'
-            containerStyle = {{justifyContent: 'center'}}
+            name="check"
+            size={25}
+            color="#fff"
+            containerStyle={{justifyContent: 'center'}}
           />
           <Text style={{fontSize: 18, color: '#fff'}}>Áp dụng</Text>
         </TouchableOpacity>

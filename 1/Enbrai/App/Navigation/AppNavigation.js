@@ -13,14 +13,14 @@ import SetNotificationScreen from '../Containers/SetNotificationScreen';
 import SignUpScreen from '../Containers/SignUpScreen';
 import SignInScreen from '../Containers/SignInScreen';
 import LoadingScreen from '../Containers/LoadingScreen';
-import ForgetPassScreen from '../Containers/ForgetPassScreen'
-import UpdatePassScreen from '../Containers/UpdatePassScreen'
-import ReadyScreen from '../Containers/ReadyScreen'
-import ChooseCorrespondingScreen from '../Containers/ChooseCorrespondingScreen'
-import ExerciseScreen from '../Containers/ExerciseScreen'
-import SelectLevelScreen from '../Containers/SelectLevelScreen'
-import SelectSectionScreen from '../Containers/SelectSectionScreen'
-import ExerciseTabScreen from '../Containers/ExerciseTabScreen'
+import ForgetPassScreen from '../Containers/ForgetPassScreen';
+import UpdatePassScreen from '../Containers/UpdatePassScreen';
+import ReadyScreen from '../Containers/ReadyScreen';
+import ChooseCorrespondingScreen from '../Containers/ChooseCorrespondingScreen';
+import ExerciseScreen from '../Containers/ExerciseScreen';
+import SelectLevelScreen from '../Containers/SelectLevelScreen';
+import SelectSectionScreen from '../Containers/SelectSectionScreen';
+import ExerciseTabScreen from '../Containers/ExerciseTabScreen';
 
 import OnceTopicScreen from '../Containers/OnceTopicScreen';
 import OnceSetNumberWordScreen from '../Containers/OnceSetNumberWordScreen';
@@ -64,29 +64,29 @@ const AppStackNavigation = createStackNavigator(
       screen: SignInScreen,
     },
     ForgetPassScreen: {
-      screen : ForgetPassScreen
+      screen: ForgetPassScreen,
     },
-    UpdatePassScreen:{
-      screen:UpdatePassScreen
+    UpdatePassScreen: {
+      screen: UpdatePassScreen,
     },
     ReadyScreen: {
-      screen: ReadyScreen
+      screen: ReadyScreen,
     },
     ChooseCorrespondingScreen: {
-      screen: ChooseCorrespondingScreen
+      screen: ChooseCorrespondingScreen,
     },
-    ExerciseTabScreen:{
-      screen:ExerciseTabScreen
+    ExerciseTabScreen: {
+      screen: ExerciseTabScreen,
     },
-    ExerciseScreen:{
-      screen:ExerciseScreen 
+    ExerciseScreen: {
+      screen: ExerciseScreen,
     },
-    SelectLevelScreen:{
-      screen:SelectLevelScreen
+    SelectLevelScreen: {
+      screen: SelectLevelScreen,
     },
-    SelectSectionScreen:{
-      screen:SelectSectionScreen
-    }
+    SelectSectionScreen: {
+      screen: SelectSectionScreen,
+    },
   },
   {
     headerMode: 'none',

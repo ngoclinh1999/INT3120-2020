@@ -83,24 +83,25 @@ const Loading = props => {
     ).setDescription('My apps test channel');
     console.log('my chanel id = ', channel.channelId);
     firebase.notifications().android.createChannel(channel);
-    firebase.notifications().onNotificationDisplayed(()=>{})
+    firebase.notifications().onNotificationDisplayed(() => {});
     const notification = new firebase.notifications.Notification()
       .setNotificationId('notificationId')
       .setTitle('Enbrai')
       .setBody('Cùng nhau học tập nào');
-    firebase.notifications().onNotification(()=>{
-      notification
-      .android.setChannelId('channelId')
-      .android.setSmallIcon('ic_launcher');
-      firebase.notifications().displayNotification(notification)
-    })
+    firebase.notifications().onNotification(() => {
+      notification.android
+        .setChannelId('channelId')
+        .android.setSmallIcon('ic_launcher');
+      firebase.notifications().displayNotification(notification);
+    });
     const date = new Date();
-        date.setMinutes(date.getMinutes() + 1);
+    date.setMinutes(date.getMinutes() + 1);
 
-        firebase.notifications().scheduleNotification(notification, {
-            fireDate: date.getTime(), repeatInterval: 'day'
-        })
-    firebase.notifications().onNotificationOpened(()=>{})
+    firebase.notifications().scheduleNotification(notification, {
+      fireDate: date.getTime(),
+      repeatInterval: 'day',
+    });
+    firebase.notifications().onNotificationOpened(() => {});
   };
   const backAction = () => {
     BackHandler.exitApp();

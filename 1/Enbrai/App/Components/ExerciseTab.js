@@ -40,18 +40,50 @@ const ExerciseTab = props => {
       setData(newdata[0].questions);
       setLength(newdata[0].questions.length);
       var userId = firebase.auth().currentUser.uid;
-      firebase.database().ref('DataResult').child(`${userId}`).child('Part').child(`${partId}`).child('levels').child(`${levelId}`).child('questCompleteCount').on('value', snap => {
-        setQuestCompleteCount(snap.val())
-      });
-      firebase.database().ref('DataResult').child(`${userId}`).child('Part').child(`${partId}`).child('levelCompleteCount').on('value', snap => {
-        setLevelCompleteCount(snap.val())
-      });
-      firebase.database().ref('DataResult').child(`${userId}`).child('Part').child(`${partId}`).child('levels').child(`${levelId}`).child('questCount').on('value', snap => {
-        setQuestCount(snap.val())
-      });
-      firebase.database().ref('DataResult').child(`${userId}`).child('Part').child(`${partId}`).child('levelCount').on('value', snap => {
-        setLevelCount(snap.val())
-      });
+      firebase
+        .database()
+        .ref('DataResult')
+        .child(`${userId}`)
+        .child('Part')
+        .child(`${partId}`)
+        .child('levels')
+        .child(`${levelId}`)
+        .child('questCompleteCount')
+        .on('value', snap => {
+          setQuestCompleteCount(snap.val());
+        });
+      firebase
+        .database()
+        .ref('DataResult')
+        .child(`${userId}`)
+        .child('Part')
+        .child(`${partId}`)
+        .child('levelCompleteCount')
+        .on('value', snap => {
+          setLevelCompleteCount(snap.val());
+        });
+      firebase
+        .database()
+        .ref('DataResult')
+        .child(`${userId}`)
+        .child('Part')
+        .child(`${partId}`)
+        .child('levels')
+        .child(`${levelId}`)
+        .child('questCount')
+        .on('value', snap => {
+          setQuestCount(snap.val());
+        });
+      firebase
+        .database()
+        .ref('DataResult')
+        .child(`${userId}`)
+        .child('Part')
+        .child(`${partId}`)
+        .child('levelCount')
+        .on('value', snap => {
+          setLevelCount(snap.val());
+        });
       await firebase
         .database()
         .ref('DataResult')
@@ -89,9 +121,9 @@ const ExerciseTab = props => {
     setCorect(correct);
     setQuest(quest);
   };
-  const updPage = (pageNum)=>{
+  const updPage = pageNum => {
     setPage(pageNum);
-  }
+  };
   return (
     <View style={{flex: 1}}>
       <View
@@ -145,10 +177,10 @@ const ExerciseTab = props => {
               length={length}
               setPage={updatePage}
               questResult={questResult}
-              questCompleteCount = {questCompleteCount}
-              levelCompleteCount = {levelCompleteCount}
-              questCount = {questCount}
-              levelCount = {levelCount}
+              questCompleteCount={questCompleteCount}
+              levelCompleteCount={levelCompleteCount}
+              questCount={questCount}
+              levelCount={levelCount}
             />
             <ExerciseAnswer
               partId={partId}
@@ -156,12 +188,12 @@ const ExerciseTab = props => {
               setPage={updPage}
               quest={quest}
               questResult={questResult}
-              questCompleteCount = {questCompleteCount}
-              levelCompleteCount = {levelCompleteCount}
-              questCount = {questCount}
-              levelCount = {levelCount}
+              questCompleteCount={questCompleteCount}
+              levelCompleteCount={levelCompleteCount}
+              questCount={questCount}
+              levelCount={levelCount}
               correct={correct}
-              levelIndex = {props.navigation.getParam('index')+1}
+              levelIndex={props.navigation.getParam('index') + 1}
             />
           </ScrollableTabView>
         </View>

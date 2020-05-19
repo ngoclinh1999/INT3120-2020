@@ -6,29 +6,25 @@ import {
   Dimensions,
   AsyncStorage,
   BackHandler,
-  StatusBar
+  StatusBar,
 } from 'react-native';
 import RadioForm from 'react-native-simple-radio-button';
 import {withNavigation} from 'react-navigation';
 import I18n from 'react-native-i18n';
 import Icon from 'react-native-vector-icons/AntDesign';
 import Flash from 'react-native-vector-icons/FontAwesome';
-import SplashScreen from 'react-native-splash-screen'
-const OnceSetNumberWord = (props) => {
+import SplashScreen from 'react-native-splash-screen';
+const OnceSetNumberWord = props => {
   const [number, setNumber] = useState(4);
-  useEffect(()=>{
+  useEffect(() => {
     SplashScreen.hide();
-    return()=>{
-    }
-  },[])
-  const radio_props = [
-    {label: '4 từ', value: 4},
-    {label: '8 từ', value: 8},
-  ];
+    return () => {};
+  }, []);
+  const radio_props = [{label: '4 từ', value: 4}, {label: '8 từ', value: 8}];
   const maxHeigh = Dimensions.get('window').height;
   return (
     <View style={{flex: 1, flexDirection: 'column'}}>
-     <StatusBar backgroundColor='#0592D2' barStyle='light-content'></StatusBar>
+      <StatusBar backgroundColor="#0592D2" barStyle="light-content" />
       <View style={{flex: 9}}>
         <View style={{alignItems: 'center', marginTop: 50}}>
           <Text style={{fontSize: 18, color: '#0288D1'}}>
@@ -43,20 +39,23 @@ const OnceSetNumberWord = (props) => {
           }}>
           <RadioForm
             radio_props={radio_props}
-            initial={number? number == 4? 0:1 : num== 4? 0:1 }
+            initial={number ? (number == 4 ? 0 : 1) : num == 4 ? 0 : 1}
             formHorizontal={false}
             labelHorizontal={true}
             animation={true}
             buttonSize={12}
             buttonColor="#9E9E9E"
             selectedButtonColor="#FFB74D"
-            onPress={async(value) => {
-              console.log(value)
+            onPress={async value => {
+              console.log(value);
               try {
-              const result = await AsyncStorage.setItem('NumberWord',value.toString());
-            } catch (error) {
-              console.log(error)
-            }
+                const result = await AsyncStorage.setItem(
+                  'NumberWord',
+                  value.toString(),
+                );
+              } catch (error) {
+                console.log(error);
+              }
               setNumber(value);
             }}
             labelStyle={{marginRight: 30, fontSize: 16}}
@@ -143,7 +142,7 @@ const OnceSetNumberWord = (props) => {
             flexDirection: 'row',
             borderRadius: 5,
           }}
-          onPress={ async() => {
+          onPress={async () => {
             props.navigation.navigate('OnceTopicScreen');
           }}>
           <Icon
